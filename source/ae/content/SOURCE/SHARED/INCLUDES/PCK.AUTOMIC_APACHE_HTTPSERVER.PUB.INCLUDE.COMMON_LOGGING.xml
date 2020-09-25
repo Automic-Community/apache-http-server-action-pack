@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.COMMON_LOGGING">
+<HEADER state="1">
+<Title>Common logging of apache http server home</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! APACHE SERVER HOME LOGGING
+: SET &UC4RB_LOGGING_PARAMETER# = "Apache HTTP server home"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AHS_APACHE_HOME#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[Common AE script to log Apache Server Home. ]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

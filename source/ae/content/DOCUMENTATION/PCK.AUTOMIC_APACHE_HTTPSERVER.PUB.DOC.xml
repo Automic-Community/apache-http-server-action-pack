@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<DOCU name="PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.DOC">
+<HEADER state="1">
+<Title>Package documentation</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[About Automic's Apache HTTP Server Package
+================================
+This package provides the integration with Apache HTTP Server. The Apache HTTP Server provides HTTP services in sync with the current HTTP standards.
+This package provides the following functionalities:
+* Install and uninstall apache HTTP server on a Windows platform.
+* Manage apache HTTP server: Start, Stop and Restart.
+* Execute any apache command on server.
+
+=Supported versions=
+Apache HTTP Server version 2.4
+
+=Limitations=
+(none)
+
+=Setup=
+* Oracle JRE 1.7 or higher must be installed on Agent OS and "java" must be set as executable on the same.
+* To run the action on Windows, Apache HTTP server executable httpd must be present on the corresponding agent OS.
+* To run the action on UNIX, apachectl script must be present on the corresponding agent OS.
+* Required configuration file(s) for HTTP Server must also be present on agent OS.
+
+=Variables=
+PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.VARA.PACKAGE_PARAMETERS
+* DEFAULT_SERVICE_NAME: Windows service name to be used when user does not specify one in promptset while running actions on windows agent. The default value is apache2.4
+
+=Actions=
+
+Following actions are supported:
+* Action Name: PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.ACTION.INSTALL_SERVICE_WINDOWS
+* Action Description: This action installs the Apache HTTP server as a service on windows.
+
+* Action Name: PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.ACTION.UNINSTALL_SERVICE_WINDOWS
+* Action Description: This action uninstalls the Apache HTTP server installed as a Windows service.
+
+* Action Name: PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.ACTION.START_SERVER
+* Action Description: This action starts Apache HTTP server.
+
+* Action name: PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.ACTION.STOP_SERVER
+* Action Description: This action stops the Apache HTTP server gracefully.
+
+* Action Name: PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.ACTION.RESTART_SERVER
+* Action Description: This action restarts the Apache HTTP server.
+
+* Action Name: PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.ACTION.EXECUTE_COMMAND
+* Action Description: This action runs any ad hoc apache http command.]]></DOC>
+</DOCU_Docu>
+</DOCU>
+</uc-export>

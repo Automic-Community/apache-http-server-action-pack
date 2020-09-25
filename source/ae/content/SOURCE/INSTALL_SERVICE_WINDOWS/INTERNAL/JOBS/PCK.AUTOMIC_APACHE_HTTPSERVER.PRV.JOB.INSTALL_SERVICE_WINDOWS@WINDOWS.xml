@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_WINDOWS AttrType="WINDOWS" name="PCK.AUTOMIC_APACHE_HTTPSERVER.PRV.JOB.INSTALL_SERVICE_WINDOWS@WINDOWS">
+<XHEADER state="1">
+<Title>Install apache http server as service on windows</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INC PCK.ITPA_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[ @echo off
+
+!------------------------------------------ LOGGING INPUT PARAMETERS ------------------------------------------
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
+
+: INC PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.COMMON_LOGGING
+
+! Service Name
+: SET &UC4RB_LOGGING_PARAMETER# = "Service name"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AHS_SERVICE_NAME#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+! Service Root
+: SET &UC4RB_LOGGING_PARAMETER# = "Server root"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AHS_SERVICE_ROOT#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+! Service Config
+: SET &UC4RB_LOGGING_PARAMETER# = "Server config file"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AHS_SERVICE_CONFIG#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+! End Successfully
+: SET &UC4RB_LOGGING_PARAMETER# = "End successfully"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AHS_SERVICE_OPTION#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+! logging start of execution
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
+
+: INC PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.EXECUTION_ENVIRONMENT
+
+! ------------------------- Creating command --------------------------------------------------------
+
+
+! initialize command
+: SET &UC4RB_AHS_INSTALL_CMDLET# = "httpd -k install "
+: SET &UC4RB_AHS_UNINSTALL_CMD# = "httpd -k uninstall "
+: SET &UC4RB_AHS_CHECK_CONFIG# = "httpd -t "
+: SET &UC4RB_AHS_CHECK_SERVICE_NAME# = "httpd "
+
+
+! Service name
+: SET &TMP_SERVICE_NAME# = ""
+: IF &UC4RB_AHS_SERVICE_NAME# <> ""
+:   SET &TMP_SERVICE_NAME# = &UC4RB_AHS_SERVICE_NAME#
+: ELSE
+:    SET &TMP_SERVICE_NAME# = GET_VAR("PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.VARA.PACKAGE_PARAMETERS", "DEFAULT_SERVICE_NAME")
+: ENDIF
+
+:   SET &UC4RB_ESCAPED_STRING# = &TMP_SERVICE_NAME#
+:   INC PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.ESCAPE_ARG_VALUE
+
+:   SET &UC4RB_AHS_CHECK_SERVICE_NAME# = STR_CAT(&UC4RB_AHS_CHECK_SERVICE_NAME#, " -n &UC4RB_ESCAPED_STRING# -t")
+    SET end_successfull=0
+!Checking to end successfully if service is already installed
+:   IF &UC4RB_AHS_SERVICE_OPTION# <> ""
+       SET end_successfull=1
+:   ENDIF
+
+
+
+  echo "[INFO] Checking if service is already installed? "
+  echo  [INFO] CHECK SERVICE NAME CMD : &UC4RB_AHS_CHECK_SERVICE_NAME#
+   &UC4RB_AHS_CHECK_SERVICE_NAME#
+  SET ERROR=%ERRORLEVEL%
+
+  IF %ERROR% EQU 0 (
+         IF  %end_successfull% EQU 1 (
+           echo "[INFO]Service already installed."
+           SET ERRORLEVEL=0
+           goto success_msg
+      )
+    echo "[ERROR]Service already installed."
+    SET ERROR=1
+    goto error_msg
+ )
+
+
+:   SET &UC4RB_AHS_UNINSTALL_CMD# = STR_CAT(&UC4RB_AHS_UNINSTALL_CMD#, " -n &UC4RB_ESCAPED_STRING#")
+:   SET &UC4RB_AHS_INSTALL_CMDLET# = STR_CAT(&UC4RB_AHS_INSTALL_CMDLET#, " -n &UC4RB_ESCAPED_STRING#")
+
+: IF &UC4RB_AHS_SERVICE_ROOT# <> ""
+! Replacing backward slashes with forward slashes
+:   SET &UC4RB_ESCAPED_STRING# = STR_SUBSTITUTE (&UC4RB_AHS_SERVICE_ROOT#, "\", "/")
+:   INC PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.ESCAPE_ARG_VALUE
+:   SET &UC4RB_AHS_INSTALL_CMDLET# = STR_CAT(&UC4RB_AHS_INSTALL_CMDLET#, " -d &UC4RB_ESCAPED_STRING#")
+:      SET &UC4RB_AHS_CHECK_CONFIG# = STR_CAT(&UC4RB_AHS_CHECK_CONFIG#, " -d &UC4RB_ESCAPED_STRING#")
+: ENDIF
+
+: IF &UC4RB_AHS_SERVICE_CONFIG# <> ""
+! Replacing backward slashes with forward slashes
+:   SET &UC4RB_ESCAPED_STRING# = STR_SUBSTITUTE (&UC4RB_AHS_SERVICE_CONFIG#, "\", "/")
+:   INC PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.ESCAPE_ARG_VALUE
+:   SET &UC4RB_AHS_INSTALL_CMDLET# = STR_CAT(&UC4RB_AHS_INSTALL_CMDLET#, " -f &UC4RB_ESCAPED_STRING#")
+:   SET &UC4RB_AHS_CHECK_CONFIG# = STR_CAT(&UC4RB_AHS_CHECK_CONFIG#, " -f &UC4RB_ESCAPED_STRING#")
+: ENDIF
+
+
+!------------------------------------------ EXECUTING INSTALL COMMANDLET ---------------------------------------------------------------------
+
+ echo "[INFO] Running check on configuration file "
+ echo  [INFO] CHECK CONFIG FILE CMD : &UC4RB_AHS_CHECK_CONFIG#
+  &UC4RB_AHS_CHECK_CONFIG#
+  SET ERROR=%ERRORLEVEL%
+
+ IF  %ERROR% NEQ 0 (
+  echo "[ERROR] Provided configuration file is erroneous "
+  goto error_msg
+  )
+
+ echo "[INFO] Configuration looks OK ,now installing the service "
+ echo  [INFO] INSTALL SERVICE CMD : &UC4RB_AHS_INSTALL_CMDLET#
+ &UC4RB_AHS_INSTALL_CMDLET#
+
+ SET ERROR=%ERRORLEVEL%
+
+ IF %ERROR% NEQ 0 (
+    echo "[ERROR]Uninstalling service as there are some issues in the configuration "
+         echo UNINSTALL SERVICE CMD : &UC4RB_AHS_UNINSTALL_CMD#
+         &UC4RB_AHS_UNINSTALL_CMD#
+         SET ERRORLEVEL=1
+         goto error_msg
+  )
+
+ :error_msg
+!-------------------------------------------ERROR MESSAGE--------------------------------------------------------------------------------
+
+:   SET &UC4RB_LOGGING_ERROR# = "******** INSTALL SERVICE ACTION FAILED ********"
+:   INC PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.CHECK_CMD_RETCODE@WINDOWS
+
+ :success_msg
+!-------------------------------------------SUCCESS MESSAGE-------------------------------------------------------------------------------
+!Status messages
+echo "INFO: ******** INSTALL SERVICE ACTION EXECUTED SUCCESSFULLY ********"]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_WINDOWS>
+</uc-export>

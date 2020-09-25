@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_APACHE_HTTPSERVER.PUB.INCLUDE.LOGGING_COMMAND">
+<HEADER state="1">
+<Title>Include to log command</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:IF &UC4RB_AGENT_OS# = "WINDOWS"
+  echo  CMDLET: &LOGGING_COMMAND#
+: ELSE
+:     SET &LOGGING_COMMAND# = STR_SUB(&LOGGING_COMMAND#, "'", "'\''")
+  echo  'CMDLET: &LOGGING_COMMAND#'
+:ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[This include logs the command in the job report for debugging purpose. ]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

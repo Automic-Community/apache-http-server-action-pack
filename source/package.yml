@@ -1,0 +1,5 @@
+# Package Build Configuration
+name: PCK.AUTOMIC_APACHE_HTTPSERVER
+
+source: ae/content
+appdata: ae/appdata
