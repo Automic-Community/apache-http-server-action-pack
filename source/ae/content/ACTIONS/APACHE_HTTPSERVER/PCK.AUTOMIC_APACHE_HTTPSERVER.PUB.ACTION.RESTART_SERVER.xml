@@ -120,7 +120,7 @@
               <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
                 <VALUE state="2">
                   <Values />
-                  <Mode>1</Mode>
+                  <Mode>0</Mode>
                 </VALUE>
               </node>
               <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET" />
